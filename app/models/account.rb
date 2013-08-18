@@ -6,6 +6,10 @@ class Account < ActiveRecord::Base
 
   attr_accessor :initial_balance
 
+  def balance
+    transactions.sum(:amount) / 100.0
+  end
+
   private
     def create_initial_transaction
       transactions.create(amount: initial_balance)

@@ -17,6 +17,17 @@ class AccountsController < ApplicationController
     end
   end
 
+  def destroy
+    @account = current_user.accounts.find(params[:id])
+
+    if @account.destroy
+      flash[:notice] = 'Conta apagada com sucesso.'
+    else
+      flash[:error] = 'Não foi possível apagar a conta.'
+    end
+    redirect_to accounts_url
+  end
+
   private
     def create_params
       params.require(:account).permit(:initial_balance, :description)
