@@ -28,7 +28,7 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 
 # Authenticate from Facebook
-gem 'omniauth-facebook'
+gem "omniauth-facebook"
 
 # Load environment variables from config/application.yml
 gem 'figaro'
