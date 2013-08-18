@@ -1,0 +1,6 @@
+<h1>Editando <%= @account.description %></h1>
+
+<%= simple_form_for @account do |f| %>
+  <%= f.input :description, label: 'Descrição' %>
+  <%= f.submit %>
+<% end %>

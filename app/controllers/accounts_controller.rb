@@ -7,6 +7,10 @@ class AccountsController < ApplicationController
     @account = current_user.accounts.new
   end
 
+  def edit
+    @account = current_user.accounts.find(params[:id])
+  end
+
   def create
     @account = current_user.accounts.new(create_params)
 
@@ -14,6 +18,16 @@ class AccountsController < ApplicationController
       redirect_to accounts_url, notice: 'Conta criada com sucesso.'
     else
       render action: :new
+    end
+  end
+
+  def update
+    @account = current_user.accounts.find(params[:id])
+
+    if @account.update_attributes(update_params)
+      redirect_to accounts_url, notice: 'Conta atualizada com sucesso.'
+    else
+      render action: :edit
     end
   end
 
@@ -31,5 +45,9 @@ class AccountsController < ApplicationController
   private
     def create_params
       params.require(:account).permit(:initial_balance, :description)
+    end
+
+    def update_params
+      params.require(:account).permit(:description)
     end
 end

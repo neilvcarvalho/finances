@@ -2,6 +2,9 @@ class Account < ActiveRecord::Base
   has_many :transactions
   belongs_to :user
 
+  validates :description, presence: true, uniqueness: { scope: :user_id }
+  validates :initial_balance, presence: true, on: :create
+
   after_create :create_initial_transaction
 
   attr_accessor :initial_balance
