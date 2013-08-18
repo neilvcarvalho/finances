@@ -1,0 +1,16 @@
+<table class="table table-striped">
+  <tr>
+    <th>Descrição</th>
+    <th>Saldo</th>
+  </tr>
+  <% @accounts.each do |account| %>
+    <tr>
+      <td><%= account.description %></td>
+      <td><%#= account.balance %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p>
+  <%= link_to 'Nova conta', new_account_path, class: 'btn' %>
+</p>

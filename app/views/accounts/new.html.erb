@@ -1,0 +1,7 @@
+<h1>Nova conta</h1>
+
+<%= simple_form_for @account do |f| %>
+  <%= f.input :description, label: 'Descrição' %>
+  <%= f.input :initial_balance, label: 'Saldo inicial' %>
+  <%= f.submit %>
+<% end %>
